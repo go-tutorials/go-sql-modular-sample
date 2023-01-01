@@ -6,10 +6,9 @@ import (
 	"github.com/core-go/log"
 	"github.com/core-go/search/query"
 	q "github.com/core-go/sql"
-	_ "github.com/go-sql-driver/mysql"
 	"reflect"
 
-	. "go-service/internal/usecase/user"
+	. "go-service/internal/user"
 )
 
 type ApplicationContext struct {
@@ -22,7 +21,7 @@ func NewApp(ctx context.Context, conf Config) (*ApplicationContext, error) {
 	if err != nil {
 		return nil, err
 	}
-	logError := log.ErrorMsg
+	logError := log.LogError
 
 	userType := reflect.TypeOf(User{})
 	userQueryBuilder := query.NewBuilder(db, "users", userType)

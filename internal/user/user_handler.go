@@ -19,7 +19,7 @@ type UserHandler interface {
 	Delete(w http.ResponseWriter, r *http.Request)
 }
 
-func NewUserHandler(find func(context.Context, interface{}, interface{}, int64, ...int64) (int64, string, error), service UserService, logError func(context.Context, string)) UserHandler {
+func NewUserHandler(find func(context.Context, interface{}, interface{}, int64, ...int64) (int64, string, error), service UserService, logError func(context.Context, string,  ...map[string]interface{})) UserHandler {
 	filterType := reflect.TypeOf(UserFilter{})
 	modelType := reflect.TypeOf(User{})
 	searchHandler := search.NewSearchHandler(find, modelType, filterType, logError, nil)
