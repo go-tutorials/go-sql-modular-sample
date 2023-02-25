@@ -8,7 +8,6 @@ require (
 	github.com/core-go/health v0.4.8
 	github.com/core-go/log v0.1.2
 	github.com/core-go/search v0.2.8
-	github.com/core-go/service v0.3.5
 	github.com/core-go/sql v0.3.6
 	github.com/gorilla/mux v1.8.0
 	github.com/kr/pretty v0.3.0 // indirect
