@@ -3,7 +3,7 @@ package user
 import (
 	"context"
 	"encoding/json"
-	sv "github.com/core-go/core"
+	"github.com/core-go/core"
 	"github.com/core-go/search"
 	"github.com/gorilla/mux"
 	"net/http"
@@ -105,8 +105,8 @@ func (h *userHandler) Patch(w http.ResponseWriter, r *http.Request) {
 
 	var user User
 	userType := reflect.TypeOf(user)
-	_, jsonMap, _ := sv.BuildMapField(userType)
-	body, er1 := sv.BuildMapAndStruct(r, &user)
+	_, jsonMap, _ := core.BuildMapField(userType)
+	body, er1 := core.BuildMapAndStruct(r, &user)
 	if er1 != nil {
 		http.Error(w, er1.Error(), http.StatusInternalServerError)
 		return
@@ -117,7 +117,7 @@ func (h *userHandler) Patch(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Id not match", http.StatusBadRequest)
 		return
 	}
-	json, er2 := sv.BodyToJsonMap(r, user, body, []string{"id"}, jsonMap)
+	json, er2 := core.BodyToJsonMap(r, user, body, []string{"id"}, jsonMap)
 	if er2 != nil {
 		http.Error(w, er2.Error(), http.StatusInternalServerError)
 		return
